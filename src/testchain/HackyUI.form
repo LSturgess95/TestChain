@@ -62,7 +62,7 @@
                       <Component id="transferAmount" min="-2" pref="104" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="270" max="32767" attributes="0"/>
+              <EmptySpace pref="269" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
@@ -78,7 +78,11 @@
                       <Component id="createGenesisBlock" min="-2" pref="156" max="-2" attributes="0"/>
                   </Group>
                   <Component id="createNewBlock" alignment="1" min="-2" pref="156" max="-2" attributes="0"/>
-                  <Component id="viewBlockchain" alignment="1" min="-2" pref="156" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="viewRecentBlock" min="-2" pref="156" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="viewBlockchain" min="-2" pref="156" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -101,7 +105,10 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="createNewBlock" min="-2" pref="62" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="viewBlockchain" min="-2" pref="62" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="viewBlockchain" alignment="3" min="-2" pref="62" max="-2" attributes="0"/>
+                          <Component id="viewRecentBlock" alignment="3" min="-2" pref="62" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace pref="26" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -243,6 +250,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="viewRecentBlock">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="View Most Recent Block"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewRecentBlockActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

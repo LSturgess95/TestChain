@@ -167,4 +167,9 @@ public class TestChain {
         String blockchainJson = new GsonBuilder().setPrettyPrinting().create().toJson(blockchain);
         return blockchainJson;
     }
+    
+    public String ViewLastBlock(){
+        String blockchainJson = new GsonBuilder().setPrettyPrinting().create().toJson(blockchain.get(blockchain.size()-1));
+        return blockchainJson;
+    }
 }

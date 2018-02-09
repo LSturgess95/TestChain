@@ -40,6 +40,7 @@ public class HackyUI extends javax.swing.JFrame {
         AtoB = new javax.swing.JButton();
         BtoA = new javax.swing.JButton();
         transferAmount = new javax.swing.JTextField();
+        viewRecentBlock = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1280, 720));
@@ -116,6 +117,13 @@ public class HackyUI extends javax.swing.JFrame {
 
         transferAmount.setText("0");
 
+        viewRecentBlock.setText("View Most Recent Block");
+        viewRecentBlock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewRecentBlockActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -147,7 +155,7 @@ public class HackyUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(75, 75, 75)
                         .addComponent(transferAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 270, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 269, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -159,7 +167,10 @@ public class HackyUI extends javax.swing.JFrame {
                                 .addGap(63, 63, 63)))
                         .addComponent(createGenesisBlock, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(createNewBlock, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(viewBlockchain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(viewRecentBlock, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(viewBlockchain, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -177,7 +188,9 @@ public class HackyUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(createNewBlock, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(viewBlockchain, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(viewBlockchain, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(viewRecentBlock, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -259,6 +272,11 @@ public class HackyUI extends javax.swing.JFrame {
         updateConsole("Sending " + transferAmount.getText() + " from wallet B to wallet A");
     }//GEN-LAST:event_BtoAActionPerformed
 
+    private void viewRecentBlockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewRecentBlockActionPerformed
+       String toUpdate = TC.ViewLastBlock();
+       updateConsole(toUpdate);
+    }//GEN-LAST:event_viewRecentBlockActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -311,5 +329,6 @@ public class HackyUI extends javax.swing.JFrame {
     private javax.swing.JTextField theDifficultyText;
     private javax.swing.JTextField transferAmount;
     private javax.swing.JButton viewBlockchain;
+    private javax.swing.JButton viewRecentBlock;
     // End of variables declaration//GEN-END:variables
 }
