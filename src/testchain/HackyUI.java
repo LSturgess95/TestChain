@@ -251,10 +251,12 @@ public class HackyUI extends javax.swing.JFrame {
 
     private void AtoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtoBActionPerformed
         TC.sendFunds(0, 1, Float.valueOf(transferAmount.getText()));
+        updateConsole("Sending " + transferAmount.getText() + " from wallet A to wallet B");
     }//GEN-LAST:event_AtoBActionPerformed
 
     private void BtoAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtoAActionPerformed
         TC.sendFunds(1, 0, Float.valueOf(transferAmount.getText()));
+        updateConsole("Sending " + transferAmount.getText() + " from wallet B to wallet A");
     }//GEN-LAST:event_BtoAActionPerformed
 
     /**
