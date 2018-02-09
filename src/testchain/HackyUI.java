@@ -33,7 +33,6 @@ public class HackyUI extends javax.swing.JFrame {
         WalletA = new javax.swing.JLabel();
         WalletB = new javax.swing.JLabel();
         createGenesisBlock = new javax.swing.JButton();
-        createNewBlock = new javax.swing.JButton();
         viewBlockchain = new javax.swing.JButton();
         theDifficultyText = new javax.swing.JTextField();
         SetDifficultyButton = new javax.swing.JButton();
@@ -75,13 +74,6 @@ public class HackyUI extends javax.swing.JFrame {
         createGenesisBlock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createGenesisBlockActionPerformed(evt);
-            }
-        });
-
-        createNewBlock.setText("Create New Block");
-        createNewBlock.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createNewBlockActionPerformed(evt);
             }
         });
 
@@ -166,7 +158,6 @@ public class HackyUI extends javax.swing.JFrame {
                                 .addComponent(SetDifficultyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(63, 63, 63)))
                         .addComponent(createGenesisBlock, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(createNewBlock, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(viewRecentBlock, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -185,9 +176,7 @@ public class HackyUI extends javax.swing.JFrame {
                                 .addComponent(theDifficultyText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)
                                 .addComponent(SetDifficultyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(createNewBlock, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(98, 98, 98)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(viewBlockchain, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(viewRecentBlock, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -244,11 +233,6 @@ public class HackyUI extends javax.swing.JFrame {
         updateConsole("Genesis block created and mined");
     }//GEN-LAST:event_createGenesisBlockActionPerformed
 
-    private void createNewBlockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createNewBlockActionPerformed
-        TC.createNewBlock();
-        updateConsole("New Block Created");
-    }//GEN-LAST:event_createNewBlockActionPerformed
-
     private void viewBlockchainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBlockchainActionPerformed
         String toUpdate = TC.ViewBlockchain();
         updateConsole(toUpdate);
@@ -264,7 +248,9 @@ public class HackyUI extends javax.swing.JFrame {
 
     private void AtoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtoBActionPerformed
         TC.sendFunds(0, 1, Float.valueOf(transferAmount.getText()));
+        updateConsole("Creating new block");
         updateConsole("Sending " + transferAmount.getText() + " from wallet A to wallet B");
+        updateConsole("Mining block");
     }//GEN-LAST:event_AtoBActionPerformed
 
     private void BtoAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtoAActionPerformed
@@ -324,7 +310,6 @@ public class HackyUI extends javax.swing.JFrame {
     private javax.swing.JLabel WalletB;
     private javax.swing.JTextField WalletBFunds;
     private javax.swing.JButton createGenesisBlock;
-    private javax.swing.JButton createNewBlock;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField theDifficultyText;
     private javax.swing.JTextField transferAmount;

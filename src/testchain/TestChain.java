@@ -52,19 +52,22 @@ public class TestChain {
     }
     
     public void sendFunds(int from, int to, float amount){
+        Block newBlock = createNewBlock();
         if (0 == from){
             //this.HUI.updateConsole("\nWalletA is Attempting to send funds (" + amount + ") to WalletB...");
             blockchain.get(blockchain.size()-1).addTransaction(walletA.sendFunds(walletB.publicKey, amount));
+            addBlock(newBlock);
         }
         if (1 == from){
              //this.HUI.updateConsole("\nWalletB is Attempting to send funds (" + amount + ") to WalletA...");
             blockchain.get(blockchain.size()-1).addTransaction(walletB.sendFunds(walletA.publicKey, amount));
+            addBlock(newBlock);
         }
     }
     
-    public void createNewBlock(){
+    public Block createNewBlock(){
         Block block = new Block(blockchain.get(blockchain.size()-1).hash);
-        addBlock(block);
+        return block;
     }
     
     public Boolean isChainValid() {
