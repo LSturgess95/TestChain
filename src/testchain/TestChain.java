@@ -52,22 +52,18 @@ public class TestChain {
     }
     
     public void sendFunds(int from, int to, float amount){
-        Block newBlock = createNewBlock();
         if (0 == from){
-            //this.HUI.updateConsole("\nWalletA is Attempting to send funds (" + amount + ") to WalletB...");
+            String previousHash = blockchain.get(blockchain.size()-1).hash;
+            Block block = new Block(previousHash);
             blockchain.get(blockchain.size()-1).addTransaction(walletA.sendFunds(walletB.publicKey, amount));
-            addBlock(newBlock);
+            addBlock(block);
         }
         if (1 == from){
-             //this.HUI.updateConsole("\nWalletB is Attempting to send funds (" + amount + ") to WalletA...");
+            String previousHash = blockchain.get(blockchain.size()-1).hash;
+            Block block = new Block(previousHash);
             blockchain.get(blockchain.size()-1).addTransaction(walletB.sendFunds(walletA.publicKey, amount));
-            addBlock(newBlock);
+            addBlock(block);
         }
-    }
-    
-    public Block createNewBlock(){
-        Block block = new Block(blockchain.get(blockchain.size()-1).hash);
-        return block;
     }
     
     public Boolean isChainValid() {
@@ -84,17 +80,14 @@ public class TestChain {
 			previousBlock = blockchain.get(i-1);
 			//compare registered hash and calculated hash:
 			if(!currentBlock.hash.equals(currentBlock.calculateHash()) ){
-				 //TestChain.HUI.updateConsole("#Current Hashes not equal");
 				return false;
 			}
 			//compare previous hash and registered previous hash
 			if(!previousBlock.hash.equals(currentBlock.previousHash) ) {
-				 //TestChain.HUI.updateConsole("#Previous Hashes not equal");
 				return false;
 			}
 			//check if hash is solved
 			if(!currentBlock.hash.substring( 0, difficulty).equals(hashTarget)) {
-				 //TestChain.HUI.updateConsole("#This block hasn't been mined");
 				return false;
 			}
 			
@@ -104,11 +97,9 @@ public class TestChain {
 				Transaction currentTransaction = currentBlock.transactions.get(t);
 				
 				if(!currentTransaction.verifiySignature()) {
-					 //TestChain.HUI.updateConsole("#Signature on Transaction(" + t + ") is Invalid");
 					return false; 
 				}
 				if(currentTransaction.getInputsValue() != currentTransaction.getOutputsValue()) {
-					 //TestChain.HUI.updateConsole("#Inputs are note equal to outputs on Transaction(" + t + ")");
 					return false; 
 				}
 				
@@ -116,12 +107,10 @@ public class TestChain {
 					tempOutput = tempUTXOs.get(input.transactionOutputId);
 					
 					if(tempOutput == null) {
-						 //TestChain.HUI.updateConsole("#Referenced input on Transaction(" + t + ") is Missing");
 						return false;
 					}
 					
 					if(input.UTXO.value != tempOutput.value) {
-						 //TestChain.HUI.updateConsole("#Referenced input Transaction(" + t + ") value is Invalid");
 						return false;
 					}
 					
@@ -133,11 +122,9 @@ public class TestChain {
 				}
 				
 				if( currentTransaction.outputs.get(0).reciepient != currentTransaction.reciepient) {
-					 //TestChain.HUI.updateConsole("#Transaction(" + t + ") output reciepient is not who it should be");
 					return false;
 				}
 				if( currentTransaction.outputs.get(1).reciepient != currentTransaction.sender) {
-					//TestChain.HUI.updateConsole("#Transaction(" + t + ") output 'change' is not sender.");
 					return false;
 				}
 				
