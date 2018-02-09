@@ -60,6 +60,7 @@ public class StringUtil {
 		return Base64.getEncoder().encodeToString(key.getEncoded());
 	}
         
+        //the Merkle tree creates a single value that proves the integrity of all of the transactions under it. log(O)
         public static String getMerkleRoot(ArrayList<Transaction> transactions) {
 		int count = transactions.size();
 		ArrayList<String> previousTreeLayer = new ArrayList<String>();
